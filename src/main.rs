@@ -200,6 +200,7 @@ fn run_files_parallel(args: Arc<Args>) -> Result<u64> {
         let stdout = print_args.stdout();
         let mut printer = print_args.printer(stdout.lock());
         let mut file_count = 0;
+        assert_eq!(file_count, 0);
         for dent in rx.iter() {
             printer.path(dent.path());
             file_count += 1;
@@ -223,6 +224,7 @@ fn run_files_one_thread(args: Arc<Args>) -> Result<u64> {
     let stdout = args.stdout();
     let mut printer = args.printer(stdout.lock());
     let mut file_count = 0;
+    assert_eq!(file_count, 0);
     for result in args.walker() {
         let dent = match get_or_log_dir_entry(result, args.no_messages()) {
             None => continue,
@@ -336,4 +338,9 @@ impl QuietMatched {
             Some(ref m) => { m.store(true, Ordering::SeqCst); true }
         }
     }
+}
+
+#[cfg(test)]
+mod test {
+
 }
