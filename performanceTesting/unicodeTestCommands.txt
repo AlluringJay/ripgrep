@@ -1,2 +1,14 @@
 icgrep 'の' /ja/1952/44789/4454850.xml
-icgrep -r 'シャーロック' /ja/
+
+rg -n 'του' el/2004/167190/76456.xml | wc -l
+repeat above for grep and icgrep
+
+rg -n 'Σέρλοκ' /el/ | wc -l
+grep -nr 'Σέρλοκ' /el/ | wc -l
+icgrep -nr 'Σέρλοκ' /el/ | wc -l
+
+icgrep -nr '\p{L}+' /el/ | wc -l
+icgrep -nr '[\u{3040}-\u{309F}]' /ja/ | wc -l
+
+icgrep -n '[\p{Greek}||\p{Lu}]' el/2004/167190/76456.xml | wc -l
+icgrep -n '[\p{Greek}--Σ]' el/2004/167190/76456.xml | wc -l

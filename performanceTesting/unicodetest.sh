@@ -1,7 +1,6 @@
 #! /bin/bash
 
 
-
 while read regexUni
 do
 	echo "======================="
@@ -12,7 +11,7 @@ do
 	time rg '$regexUni' ../../../../Downloads/ja/ | wc -l 
 	echo
 	echo "GREP"
-	time egrep -ar '$regexUni' ../../../../Downloads/ja/ | wc -l
+	time grep -Ear '$regexUni' ../../../../Downloads/ja/ | wc -l
 done < regexUnicode.txt
 
 : <<'END'
